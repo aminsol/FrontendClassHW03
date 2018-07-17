@@ -18,6 +18,14 @@
         window.location.replace("payment.html");
     });
 
+    $("#strengthLevel").change(function () {
+        let value = $(this).val();
+        let R = 255 * value / 100;
+        let G = 255 - (255 * value / 100);
+        let B = 50 - (50 * value / 100);
+        $(this).css("background-color", "rgba("+ R +","+ G +","+ B +",1)");
+    });
+
     formHandler.addSubmitHandler(function (data) {
         myTruck.createOrder.call(myTruck, data);
         checkList.addRow.call(checkList, data);
